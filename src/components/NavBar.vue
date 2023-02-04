@@ -22,12 +22,12 @@
 
 <script lang="ts">
 import { defineComponent } from'vue';
-// need to import authorization 
+// need to import authorization
 
 export default defineComponent({
-  name: 'Navbar',
+  name: 'NavBar',
   computed: {
-    // need auth token here 
+    // need auth token here
   },
   methods: {
     logout() {

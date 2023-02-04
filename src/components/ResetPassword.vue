@@ -29,7 +29,7 @@ export default defineComponent({
     async handleSubmit() {
       const response = await axios.post('resetPassword', {
           password: this.password,
-          confirmed_password: this.confirmed_password
+          confirmed_password: this.confirmed_password,
           token: this.$route.params.token
       });
 

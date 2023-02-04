@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import ForgotPassword from '../components/ForgotPassword.vue'
 import ResetPassword from "../components/ResetPassword.vue"
+import FeedView from '../views/FeedView.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -30,6 +31,11 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/:pathMatch(.*)',
     component: () => import(/* webpackChunkName: "notFound" */ '../views/NotFoundView.vue')
+  },
+  {
+    path: '/feed',
+    name: 'feed',
+    component: FeedView,
   },
 ]
 
