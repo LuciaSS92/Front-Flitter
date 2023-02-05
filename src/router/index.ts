@@ -44,6 +44,12 @@ const routes: Array<RouteRecordRaw> = [
     name: 'feed',
     component: FeedView,
   },
+  {
+    path: '/for-you',
+    name: 'for-you',
+
+    component: () => import(/* webpackChunkName: "for-you" */ '../views/PrivateFeedView.vue')
+  }
 ]
 
 const router = createRouter({
