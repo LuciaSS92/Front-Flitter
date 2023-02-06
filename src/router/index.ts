@@ -1,11 +1,23 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import ForgotPassword from '../components/ForgotPassword.vue'
+import ResetPassword from "../components/ResetPassword.vue"
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'home',
     component: HomeView
+  },
+  {
+    path: '/forgot',
+    name: 'forgot-password',
+    component: ForgotPassword
+  },
+  {
+    path: '/reset/:token',
+    name: 'reset-password',
+    component: ResetPassword
   },
   {
     path: '/about',
