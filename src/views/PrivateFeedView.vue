@@ -1,26 +1,34 @@
 <template>
     <div class="privateFeed">
-        <img alt="Vue logo" src="../assets/logo.png">
-        <CreateFleet @newFleet="saveFleet" />
-        <HelloWorld msg="Welcome to Your Private Feed" />
+        <h2>Welcome to your personal feed</h2>
+        <CreateFleet @newFleet="postFleet" />
     </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
 import CreateFleet from '@/components/CreateFleet.vue';
+import { Fleet } from '@/models/fleet';
+import axios from "axios";
 
 export default defineComponent({
     name: 'PrivateFeedView',
     components: {
-        CreateFleet,
+        CreateFleet, 
     },
     setup() {
-        function saveFleet(fleet: string) {
-            console.log(fleet)
+        function postFleet(fleet: Fleet) {
+            console.log("Sending fleet...")
+            axios.post("http://localhost:3000/api/fleets", {
+                userName: fleet.userName,
+                text: fleet.text,
+                img: fleet.img,
+            }).then(response => {
+                console.log("Success")
+                console.log(response.data)
+            }).catch(error => console.log(error))
         }
-        return { saveFleet }
+        return { postFleet,  }
     }
 });
 </script>
