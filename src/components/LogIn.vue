@@ -1,41 +1,56 @@
 <template>
     <div class="login">
-      <h1>Login</h1>
-      <form action="" class="login-form" @submit.prevent="handleSubmit">        
-        <input class="form-input" v-model="email" type="email" id="email" required placeholder="Email">        
-        <input class="form-input" v-model="password" type="password" id="password" placeholder="Password">
-        <input class="login-btn" type="submit" value="Login">
-      </form>
+        <h1>Login</h1>
+        <form action="" class="login-form" @submit.prevent="submitLogin">
+            <input class="form-input" v-model="email" type="email" id="email" required placeholder="Email">
+            <input class="form-input" v-model="password" type="password" id="password" placeholder="Password">
+            <input class="login-btn" type="submit" value="Login">
+        </form>
     </div>
-  </template>
+</template>
   
-  <script lang="ts">
-  import router from '@/router';
-  import { defineComponent } from 'vue';
-  import axios from 'axios';  
-  
-  
-  export default defineComponent ({
+<script lang="ts">
+import router from '@/router';
+import { defineComponent } from 'vue';
+import axios from 'axios';
+
+
+export default defineComponent({
     name: 'LogIn',
-    data() {    
-      return {      
-        email: "",
-        password: "",
-      }       
+    data() {
+        return {
+            email: "",
+            password: "",
+        }
     },
     methods: {
-      async handleSubmit() {
+        async submitLogin() {
+            var data = JSON.stringify({
+                "email": this.email,
+                "password": this.password,
+            });
 
+            var config = {
+                method: 'post',
+                url: 'http://localhost:3000/users/login',
+                headers: {
+                    'Content-Type': 'application/json',
 
-        const response = await axios.post('http://localhost:3000/users/login', {
-          email: this.email,
-          password: this.password               
-        });    
-        console.log(response);        
-        localStorage.setItem('access_token', response.data.access_token);               
-        alert("You have successfully logged it");
-        router.push({ name: "home" });      
-      }
+                },
+                data: data
+            };
+
+            axios(config)
+                .then(function (response) {                    
+                    alert("You have successfully logged it");
+                    router.push({ name: "home" });
+                    console.log(JSON.stringify(response.data));
+                })
+                .catch(function (error) {
+                    alert("Email and password do not match")
+                    console.log(error);
+                });
+        }
     },
 })
 </script>

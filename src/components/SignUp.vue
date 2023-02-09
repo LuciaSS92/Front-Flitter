@@ -1,8 +1,8 @@
 <template>
     <h1>Sign Up</h1>
-    <form action="" @submit.prevent="submitForm" class="submit-form">
-        <input class="form-input" v-model="name" type="text" name="name" placeholder="Username"
-            @keydown="checkAlpha($event)" required />
+    <form action="" @submit.prevent="submitSignup" class="submit-form">
+        <input class="form-input" v-model="name" type="text" name="name" placeholder="Name"
+            @keydown="checkAlphabet($event)" required />
         <input class="form-input" v-model="email" type="email" name="email" placeholder="email@email.com" required />
         <input class="form-input" v-model="password" type="password" name="password" placeholder="Password" required />
         <input class="form-input" v-model="confirmPassword" type="password" name="confirmPassword"
@@ -14,6 +14,7 @@
 <script lang="ts" >
 import axios from 'axios';
 import { defineComponent } from 'vue';
+import router from '@/router';
 
 export default defineComponent({
     name: 'SignUp',
@@ -26,13 +27,13 @@ export default defineComponent({
         }
     },
     methods: {
-        checkAlpha(event: KeyboardEvent) {
+        checkAlphabet(event: KeyboardEvent) {
             if (!/[a-zA-Z]/.test(event.key)) {
-                alert("Username cannot contain numbers or symbols")
+                alert("Name cannot contain numbers or symbols")
                 event.preventDefault();
             }
         },
-        async submitForm() {
+        async submitSignup() {
             var data = JSON.stringify({
                 "email": this.email,
                 "password": this.password,
@@ -55,7 +56,7 @@ export default defineComponent({
                 axios(config)
                     .then(function (response) {
                         alert("Your account has been successfully created")
-                        // router.push({ name: "login" });
+                        router.push({ name: "login" });
                         console.log(JSON.stringify(response.data));
                     })
                     .catch(function (error) {
