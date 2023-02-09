@@ -58,13 +58,16 @@ export default defineComponent({
 
                 axios(config)
                     .then(function (response) {
+                        alert("Your account has been successfully created")
+                        // router.push({ name: "login" });
                         console.log(JSON.stringify(response.data));
                     })
                     .catch(function (error) {
+                        alert("Email account already in use")
                         console.log(error);
                     });
-                alert("Your account has been successfully created")
-                // router.push({ name: "login" });
+               
+                
             }
         }
     }
