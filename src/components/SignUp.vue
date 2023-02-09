@@ -1,18 +1,14 @@
 <template>
-    <div class="register">
-        <h1>Sign Up</h1>
-        <form action="" @submit.prevent="submitForm" class="submit-form">
-            <input class="form-input" v-model="name" type="text" name="name" placeholder="Username"
-                @keydown="checkAlpha($event)" required />
-            <input class="form-input" v-model="email" type="email" name="email" placeholder="email@email.com"
-                required />
-            <input class="form-input" v-model="password" type="password" name="password" placeholder="Password"
-                required />
-            <input class="form-input" v-model="confirmPassword" type="password" name="confirmPassword"
-                placeholder="Confirm password" required />
-            <button class="signup-btn" type="submit">Submit</button>
-        </form>
-    </div>
+    <h1>Sign Up</h1>
+    <form action="" @submit.prevent="submitForm" class="submit-form">
+        <input class="form-input" v-model="name" type="text" name="name" placeholder="Username"
+            @keydown="checkAlpha($event)" required />
+        <input class="form-input" v-model="email" type="email" name="email" placeholder="email@email.com" required />
+        <input class="form-input" v-model="password" type="password" name="password" placeholder="Password" required />
+        <input class="form-input" v-model="confirmPassword" type="password" name="confirmPassword"
+            placeholder="Confirm password" required />
+        <button class="signup-btn" type="submit">Submit</button>
+    </form>
 </template>
 
 <script lang="ts" >
@@ -66,8 +62,8 @@ export default defineComponent({
                         alert("Email account already in use")
                         console.log(error);
                     });
-               
-                
+
+
             }
         }
     }
