@@ -13,7 +13,8 @@
 import router from '@/router';
 import { defineComponent } from 'vue';
 import axios from 'axios';
-
+import { VueCookies } from 'vue-cookies';
+import Cookies from "js-cookie-vue";
 
 export default defineComponent({
     name: 'LogIn',
@@ -35,16 +36,17 @@ export default defineComponent({
                 url: 'http://localhost:3000/users/login',
                 headers: {
                     'Content-Type': 'application/json',
-
                 },
                 data: data
             };
 
             axios(config)
-                .then(function (response) {                    
+                .then(function (response) {
+                    // Cookies.set("user", response.data)
+                    localStorage.setItem('auth_Token', response.data.authToken);
+                    console.log(response.data);
                     alert("You have successfully logged it");
                     router.push({ name: "home" });
-                    console.log(JSON.stringify(response.data));
                 })
                 .catch(function (error) {
                     alert("Email and password do not match")
