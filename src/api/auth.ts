@@ -7,7 +7,17 @@ const axiosInstance = axios.create({
 });
 
 export default {
-    getAllFleets() {
-        return axiosInstance.get("/api/fleets");
-      },
-}
+  getAllFleets() {
+    return axiosInstance.get("/api/fleets");
+  },
+  signUp(
+    email: string,
+    name: string,
+    password: string,
+    avatar: string,
+    role: string
+  ) {
+    const user = { email, name, password, avatar, role };
+    return axios.post(BASE_URL + "/users/", user);
+  },
+};
