@@ -36,13 +36,12 @@ export default defineComponent({
                 url: 'http://localhost:3000/users/login',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem("auth_Token")
                 },
                 data: data
             };
-
             axios(config)
-                .then(function (response) {
-                    // Cookies.set("user", response.data)
+                .then(function (response) {                    
                     localStorage.setItem('auth_Token', response.data.authToken);
                     console.log(response.data);
                     alert("You have successfully logged it");
