@@ -1,25 +1,25 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import ForgotPassword from '../components/ForgotPassword.vue'
-import ResetPassword from "../components/ResetPassword.vue"
-import FeedView from '../views/FeedView.vue';
+import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
+import HomeView from "../views/HomeView.vue";
+import ForgotPassword from "../components/ForgotPassword.vue";
+import ResetPassword from "../components/ResetPassword.vue";
+import FeedView from "../views/FeedView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
-    name: 'home',
-    component: HomeView
+    path: "/",
+    name: "home",
+    component: HomeView,
   },
   {
-    path: '/forgot',
-    name: 'forgot-password',
-    component: ForgotPassword
+    path: "/forgot",
+    name: "forgot-password",
+    component: ForgotPassword,
   },
   {
     path: '/reset/:token',
     name: 'reset-password',
-    component: ResetPassword
-  },  
+    component: ResetPassword,
+  },
   {
     path: "/signup",
     name: "signup",
@@ -27,13 +27,19 @@ const routes: Array<RouteRecordRaw> = [
       import(/* webpackChunkName: "signup" */ "../views/SignUpView.vue"),
   },
   {
-    path: '/:pathMatch(.*)',
-    component: () => import(/* webpackChunkName: "notFound" */ '../views/NotFoundView.vue')
+    path: "/login",
+    name: "login",
+    component: () =>
+      import(/* webpackChunkName: "login" */ "../views/LoginView.vue"),
   },
-  
   {
-    path: '/feed',
-    name: 'feed',
+    path: "/:pathMatch(.*)",
+    component: () =>
+      import(/* webpackChunkName: "notFound" */ "../views/NotFoundView.vue"),
+  },
+  {
+    path: "/feed",
+    name: "feed",
     component: FeedView,
   },
   {
@@ -41,12 +47,13 @@ const routes: Array<RouteRecordRaw> = [
     name: 'for-you',
 
     component: () => import(/* webpackChunkName: "for-you" */ '../views/PrivateFeedView.vue')
-  }
-]
+  },
+];
+
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;
