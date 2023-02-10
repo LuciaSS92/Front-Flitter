@@ -13,8 +13,6 @@
 import router from '@/router';
 import { defineComponent } from 'vue';
 import axios from 'axios';
-import { VueCookies } from 'vue-cookies';
-import Cookies from "js-cookie-vue";
 
 export default defineComponent({
     name: 'LogIn',
