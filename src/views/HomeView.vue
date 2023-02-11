@@ -1,15 +1,18 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
   </div>
+  <SearchBarVue />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import SearchBarVue from '@/components/SearchBar.vue';
 
 export default defineComponent({
   name: 'HomeView',
-
+  components: {
+    SearchBarVue,
+  },
 });
 </script>
