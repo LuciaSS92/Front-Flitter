@@ -13,8 +13,8 @@
       v-for="fleet in fleetsPaginated"
       :key="fleet.createdAt"
     >
-    <FleetCard :fleet="fleet"> 
-      
+    <FleetCard :fleet="fleet">
+
     </FleetCard>
     </li>
   </ul>
@@ -42,7 +42,7 @@ export default defineComponent({
   data() {
     return {
       search: "",
-      searched: false,
+      searched: true,
       currentPage: 1,
       fleetsByPage: [] as Fleet[],
     };
@@ -65,26 +65,14 @@ export default defineComponent({
     },
 
     fleetsPaginated(): Fleet[] {
-      let myFleetsFeed: Fleet[] = this.searched
-        ? this.fleetsByPage
-        : this.fleets;
 
-      myFleetsFeed = myFleetsFeed.sort((a, b) => {
-        return (
-          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-        );
-      });
-
-      return myFleetsFeed.slice(
+      return this.fleets.slice(
         (this.currentPage - 1) * PAGE_SIZE,
         this.currentPage * PAGE_SIZE
       );
     },
     totalPages(): number {
-      let myFleetsFeed: Fleet[] = this.searched
-        ? this.fleetsByPage
-        : this.fleets;
-      return Math.floor(myFleetsFeed.length / PAGE_SIZE) + 1;
+      return Math.floor(this.fleets.length / PAGE_SIZE) + 1;
     },
   },
 });
