@@ -24,4 +24,3 @@ export default {
     return axios.post(BASE_URL + "/users/", user);
   },
 };
-
