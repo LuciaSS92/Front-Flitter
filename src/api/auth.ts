@@ -15,3 +15,8 @@ export default {
     return await axiosInstance.get("/api/fleets?text=" + text);
   }
 }
+
+export interface AuthData {
+  access_token: string
+  refresh_token: string
+}
