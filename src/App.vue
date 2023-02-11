@@ -6,9 +6,20 @@
     <router-link to="/login">Login</router-link>|
     <router-link to="/for-you">Private Feed</router-link>
   </nav>-->
+  <NavBar/>
   <router-view/>
 </template>
+<script lang="ts">
+import { defineComponent } from 'vue';
+import NavBar from '@/components/NavBar.vue';
 
+export default defineComponent({
+  name: 'HomeView',
+  components: {
+    NavBar
+},
+});
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

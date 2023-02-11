@@ -33,6 +33,7 @@
 import router from '@/router';
 import { defineComponent } from 'vue';
 import axios from 'axios';
+import store from "@/store";
 
 export default defineComponent({
     name: 'LogIn',
@@ -54,13 +55,14 @@ export default defineComponent({
                 url: 'http://localhost:3000/users/login',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + localStorage.getItem("auth_Token")
+                    'Authorization': 'Bearer ' + store.getters.getToken//localStorage.getItem("auth_Token")
                 },
                 data: data
             };
             axios(config)
                 .then(function (response) {
-                    localStorage.setItem('auth_Token', response.data.authToken);
+                    store.commit("setToken", response.data.authToken);
+                    // localStorage.setItem('auth_Token', response.data.authToken);
                     console.log(response.data);
                     alert("You have successfully logged it");
                     router.push({ name: "for-you" });

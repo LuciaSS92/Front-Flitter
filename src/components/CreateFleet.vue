@@ -23,11 +23,20 @@
 
 <script lang="ts">
 import { Fleet } from "@/models/fleet";
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, onMounted, computed } from "vue";
+import store from "@/store";
+import { useRouter } from 'vue-router'
 
 export default defineComponent({
     name: "CreateFleet",
     setup(_, { emit }) {
+        const router = useRouter()
+        const isLogged = computed(() => {return Boolean(store.getters.getToken)})
+        onMounted(()=>{
+            if(!isLogged.value){
+                router.push('/login');
+            }
+        })
         const newFleet = ref<string>("");
         function publish() {
             if (newFleet.value) {

@@ -14,8 +14,7 @@ import NavBar from '@/components/NavBar.vue';
 export default defineComponent({
   name: 'HomeView',
   components: {
-    SearchBarVue,
-    NavBar
-},
+    SearchBarVue
+  },
 });
 </script>
