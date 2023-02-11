@@ -10,6 +10,9 @@ export default {
   getAllFleets() {
     return axiosInstance.get("/api/fleets");
   },
+  async searchFleets(text: string) {
+    return await axiosInstance.get("/api/fleets?text=" + text);
+  },
   signUp(
     email: string,
     name: string,
@@ -21,3 +24,4 @@ export default {
     return axios.post(BASE_URL + "/users/", user);
   },
 };
+
