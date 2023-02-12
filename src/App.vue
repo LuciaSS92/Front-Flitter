@@ -6,6 +6,7 @@
     <router-link to="/login">Login</router-link>|
     <router-link to="/for-you">Private Feed</router-link>
   </nav>-->
+  
   <NavBar/>
   <router-view/>
 </template>
