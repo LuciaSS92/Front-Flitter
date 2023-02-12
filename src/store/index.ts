@@ -31,5 +31,9 @@ export default createStore<State>({
       const response = await auth.searchFleets(search)
       commit("setFleets", response.data);
     },
+    async getUserFleets({ commit }, { userName }) {
+      const response = await auth.getUserFleets(userName)
+      commit("setFleets", response.data)
+    },
   },
 });
