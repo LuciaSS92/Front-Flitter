@@ -32,7 +32,8 @@ export default createStore<State>({
   actions: {
     async requestFleets({ commit }) {
       auth.getAllFleets().then((response) => {
-        commit("setFleets", response.data.text);
+        console.log("This is the response", response.data)
+        commit("setFleets", response.data);
       });
     },
     async searchFleets({ commit }, { search }) {
