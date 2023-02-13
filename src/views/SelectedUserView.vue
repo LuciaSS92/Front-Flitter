@@ -62,21 +62,25 @@ export default defineComponent({
       searched: true,
       currentPage: 1,
       fleetsByPage: [] as Fleet[],
-      username: this.$route.params.userName,
+      username: '',
       user: {} as User,
       ownUser: null as User | null
     };
   },
   // Get the fleets from the store
   async mounted() {
-    const userName: string = this.$route.params.userName.toString();
-    console.log("User fleets feed created");
-    console.log(userName);
-    await store.dispatch("getUserFleets", { userName });
-    this.user = await auth.getUserFromName(userName);
+    this.username = this.$route.params.userName?.toString();
     if(this.isLogged){
       this.ownUser = await auth.getCurrentUser();
     }
+    if(!this.username && this.isLogged) {
+      this.username = this.ownUser?.name ?? '';
+    }
+    if(this.username) {
+      this.user = await auth.getUserFromName(this.username);
+      await store.dispatch("getUserFleets", { userName: this.username });
+    }
+    
   },
   methods: {
     onPageChanged(page: number) {
