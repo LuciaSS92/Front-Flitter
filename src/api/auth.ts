@@ -23,4 +23,7 @@ export default {
     const user = { email, name, password, avatar, role };
     return axios.post(BASE_URL + "/users/", user);
   },
+  async getUserFleets(userName: string) {
+    return await axiosInstance.get("/api/fleets?userName=" + userName);
+  },
 };
