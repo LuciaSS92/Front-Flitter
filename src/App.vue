@@ -1,7 +1,6 @@
 <template>
-  
   <NavBar/>
-  <router-view/>
+  <router-view :key="$route.fullPath"/>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
