@@ -10,6 +10,8 @@ import { defineComponent } from 'vue';
 import CreateFleet from '@/components/CreateFleet.vue';
 import { Fleet } from '@/models/fleet';
 import axios from "axios";
+import store from "@/store";
+
 
 export default defineComponent({
     name: 'PrivateFeedView',
@@ -19,11 +21,17 @@ export default defineComponent({
     setup() {
         function postFleet(fleet: Fleet) {
             console.log("Sending fleet...")
-            axios.post("http://localhost:3000/api/fleets", {
+            const fleetData = {
                 userName: fleet.userName,
                 text: fleet.text,
                 img: fleet.img,
-            }).then(response => {
+            };
+            const headers = {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + store.getters.getToken
+            };
+
+            axios.post("http://localhost:3000/api/fleets", fleetData, {headers}).then(response => {
                 console.log("Success")
                 console.log(response.data)
             }).catch(error => console.log(error))

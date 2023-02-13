@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "http://192.168.0.109:3000";
 
 const axiosInstance = axios.create({
   baseURL: BASE_URL,
@@ -8,9 +8,8 @@ const axiosInstance = axios.create({
 
 export default {
   async getAllFleets() {
-    return await axiosInstance.get("/api/fleets");
+    return await axiosInstance.get("/api/fleets?sort=-createdAt");
   },
-
   async searchFleets(text: string) {
     return await axiosInstance.get("/api/fleets?text=" + text);
   },
