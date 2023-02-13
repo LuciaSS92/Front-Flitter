@@ -1,17 +1,26 @@
-import axios from "axios";
-
-const BASE_URL = "http://192.168.0.109:3000";
-
-const axiosInstance = axios.create({
-  baseURL: BASE_URL,
-});
+import {User} from "@/models/user"
+import flitterApi from './api'
 
 export default {
   async getAllFleets() {
-    return await axiosInstance.get("/api/fleets?sort=-createdAt");
+    return await flitterApi.get("/api/fleets?sort=-createdAt");
   },
   async searchFleets(text: string) {
-    return await axiosInstance.get("/api/fleets?text=" + text);
+    return await flitterApi.get("/api/fleets?text=" + text);
+  },
+  async getUserFromName(name:string):Promise<User>{
+    const response = await flitterApi.get("/users?name=" + name);
+    return response.data.user;
+  },
+  async getCurrentUser():Promise<User>{
+    const response = await flitterApi.get("/users/current");
+    return response.data.user;
+  },
+  async followUser(userId:string){
+    await flitterApi.post("/api/follows", {userId});
+  },
+  async unfollowUser(userId:string){
+    await flitterApi.delete("/api/follows", {data:{userId}});
   },
   signUp(
     email: string,
@@ -21,9 +30,9 @@ export default {
     role: string
   ) {
     const user = { email, name, password, avatar, role };
-    return axios.post(BASE_URL + "/users/", user);
+    return flitterApi.post("/users/", user);
   },
   async getUserFleets(userName: string) {
-    return await axiosInstance.get("/api/fleets?userName=" + userName);
+    return await flitterApi.get("/api/fleets?userName=" + userName);
   },
 };
