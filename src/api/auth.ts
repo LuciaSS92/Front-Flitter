@@ -10,7 +10,6 @@ export default {
   async getAllFleets() {
     return await axiosInstance.get("/api/fleets?sort=-createdAt");
   },
-
   async searchFleets(text: string) {
     return await axiosInstance.get("/api/fleets?text=" + text);
   },

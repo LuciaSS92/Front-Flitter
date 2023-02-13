@@ -4,15 +4,20 @@ import { Fleet } from "@/models/fleet";
 
 interface State {
   fleets: Fleet[];
+  token: string;
 }
 export default createStore<State>({
   state: {
     fleets: [] as Fleet[],
+    token: '' as string
   },
   getters: {
     getFleets(state: { fleets: Fleet[] }) {
       console.log("GETTERS", console.log(state.fleets));
       return state.fleets;
+    },
+    getToken(state: { token: string }) {
+      return state.token;
     },
   },
   mutations: {
@@ -20,6 +25,9 @@ export default createStore<State>({
       console.log("SETEANDO", fleets);
       state.fleets = fleets;
     },
+    setToken(state, token) {
+      state.token = token;
+    }
   },
   actions: {
     async requestFleets({ commit }) {
