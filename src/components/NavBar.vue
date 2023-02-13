@@ -44,7 +44,6 @@
 <script lang="ts">
 import { defineComponent } from'vue';
 import store from "@/store";
-
 export default defineComponent({
   name: 'NavBar',
   data() {
@@ -73,11 +72,9 @@ export default defineComponent({
     }
   },
 });
-
 </script>
 
 <style scoped>
-
 nav {
   width: 100%;
   display: flex;
@@ -85,7 +82,6 @@ nav {
   align-items: center;
   background-color:aliceblue;
 }
-
 ul {
   list-style: none;
   display: flex;
@@ -95,15 +91,11 @@ ul {
 li {
   margin-right: 10px;
 }
-
 button {
   border-radius: 5px;
   
-
 }
-
 svg:hover {
   cursor: pointer;
 }
-
 </style>
