@@ -1,10 +1,10 @@
 <template>
   <nav>
     <ul>
+      <li>
+        <router-link to="/">Home</router-link> <!--public feed-->
+      </li>
       <template v-if="!isLogged">
-        <li>
-          <router-link to="/">Home</router-link> <!--public feed-->
-        </li>
         <li>
           <router-link to="/login">Login</router-link> <!--Login page-->
         </li>
