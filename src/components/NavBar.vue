@@ -14,10 +14,10 @@
       </template>
       <template v-if="isLogged">
         <li>
-          <router-link to="/profile">Profile</router-link> <!--user profile-->
+          <router-link to="/profile/:userName">Profile</router-link> <!--user profile-->
         </li>
         <li>
-          <router-link to="/for-you">Your Feed</router-link> <!--private feed-->
+          <router-link to="/private-feed">Your Feed</router-link> <!--private feed-->
         </li>
         <li>
           <button @click="showWarning = true">Deactivate Account?</button>
