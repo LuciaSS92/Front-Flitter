@@ -5,7 +5,7 @@
         <router-link to="/">Home</router-link> <!--public feed-->
       </li>
       <li>
-        <router-link to="/profile">Profile</router-link> <!--user profile-->
+        <router-link to="/profile/:userName">Profile</router-link> <!--user profile-->
       </li>
       <li>
         <router-link to="/private-feed">Your Feed</router-link> <!--private feed-->
