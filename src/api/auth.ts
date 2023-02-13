@@ -27,7 +27,4 @@ export default {
   async getUserFleets(userName: string) {
     return await axiosInstance.get("/api/fleets?userName=" + userName);
   },
-  async getUsersFollowing(following: number) {
-    return await axiosInstance.get("api/users?following=" + following);
-  }
 };
