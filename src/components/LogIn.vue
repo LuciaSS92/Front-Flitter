@@ -55,14 +55,13 @@ export default defineComponent({
                 url: 'http://localhost:3000/users/login',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + store.getters.getToken//localStorage.getItem("auth_Token")
+                    'Authorization': 'Bearer ' + store.getters.getToken
                 },
                 data: data
             };
             axios(config)
                 .then(function (response) {
                     store.commit("setToken", response.data.authToken);
-                    // localStorage.setItem('auth_Token', response.data.authToken);
                     console.log(response.data);
                     alert("You have successfully logged it");
                     router.push({ name: "for-you" });
