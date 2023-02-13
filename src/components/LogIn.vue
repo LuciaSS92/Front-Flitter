@@ -21,6 +21,7 @@
         placeholder="Password"
       />
       <input class="form-submit" type="submit" value="Login" />
+      <router-link class="form-submit" to="/forgot">Forgot password?</router-link>
     </form>
     <p class="form">
       <label class="form-label" for="#password">Don't have an account?</label>
