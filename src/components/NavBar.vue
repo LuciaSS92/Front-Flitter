@@ -57,6 +57,7 @@
       </template>
     </ul>
   </nav>
+
 </template>
 
 <script lang="ts">
@@ -99,6 +100,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
+
 .title {
   font-size: 2.5rem;
   color: white;
@@ -133,6 +135,7 @@ svg{
 svg:hover {
   cursor: pointer;
 }
+
 
 nav a {
   font-weight: bold;
