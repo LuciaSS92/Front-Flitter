@@ -87,7 +87,7 @@ export default defineComponent({
             return time;
         },
         visitUserProfile(userName: string) {
-            this.$router.push('/profile/:userName');
+            this.$router.push('/profile/' + userName);
         },
     },
 })

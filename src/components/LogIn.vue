@@ -62,6 +62,7 @@ export default defineComponent({
             };
             axios(config)
                 .then(function (response) {
+                    localStorage.setItem("token", response.data.authToken);
                     store.commit("setToken", response.data.authToken);
                     console.log(response.data);
                     alert("You have successfully logged it");

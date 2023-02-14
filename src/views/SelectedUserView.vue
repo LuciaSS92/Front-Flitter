@@ -7,6 +7,10 @@
           ></path>
           </svg>
       <h2>{{ username }}</h2>
+      <div v-if="isLogged && !isOwnProfile">
+        <button v-if="!isFollowing" @click="follow()" class="btn btn-info">Follow</button>
+        <button v-if="isFollowing" @click="unfollow()" class="btn btn-info">Unfollow</button>
+      </div>
       <p class="bio">
         <strong>Bio:</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad iste harum animi deserunt voluptatem, exercitationem molestias, minima beatae numquam, nostrum fugit odio temporibus officiis doloribus architecto reiciendis blanditiis repellat tempora.
       </p>
@@ -39,8 +43,10 @@
 import FleetCard from "@/components/FleetCard.vue";
 import { defineComponent } from "vue";
 import { Fleet } from "@/models/fleet";
+import { User } from "@/models/user";
 import PaginationItem from "@/components/PaginationItem.vue";
 import store from "@/store";
+import auth from "@/api/auth"
 
 const PAGE_SIZE = 5;
 
@@ -56,22 +62,50 @@ export default defineComponent({
       searched: true,
       currentPage: 1,
       fleetsByPage: [] as Fleet[],
-      username: this.$route.params.userName,
+      username: '',
+      user: {} as User,
+      ownUser: null as User | null
     };
   },
   // Get the fleets from the store
-  async created() {
-    console.log("User fleets feed created");
-    console.log(this.$route.params.userName);
-    await store.dispatch("getUserFleets", { userName: this.$route.params.userName });
+  async mounted() {
+    this.username = this.$route.params.userName?.toString();
+    if(this.isLogged){
+      this.ownUser = await auth.getCurrentUser();
+    }
+    if(!this.username && this.isLogged) {
+      this.username = this.ownUser?.name ?? '';
+    }
+    if(this.username) {
+      this.user = await auth.getUserFromName(this.username);
+      await store.dispatch("getUserFleets", { userName: this.username });
+    }
+    
   },
   methods: {
     onPageChanged(page: number) {
       console.log("Page changed to: " + page);
       this.currentPage = page;
+    },
+    async follow(){
+      await auth.followUser(this.user._id);
+      this.ownUser = await auth.getCurrentUser();
+    },
+    async unfollow(){
+      await auth.unfollowUser(this.user._id);
+      this.ownUser = await auth.getCurrentUser();
     }
   },
   computed: {
+    isLogged(): boolean {
+      return Boolean(store.getters.getToken);
+    },
+    isOwnProfile(): boolean {
+      return this.isLogged && this.user._id===this.ownUser?._id
+    },
+    isFollowing(): boolean {
+      return this.isLogged && Boolean(this.ownUser?.following.includes(this.user._id));
+    },
     fleets(): Fleet[] {
       return store.getters.getFleets;
     },
@@ -136,5 +170,9 @@ svg {
   width: 3rem;
   height: 3rem;
   margin: 1rem auto;
+}
+
+.btn{
+  margin-right: 5px;
 }
 </style>
