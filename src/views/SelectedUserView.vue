@@ -10,8 +10,8 @@
           <h2>{{ username }}</h2>      
     </div>
       <div v-if="isLogged && !isOwnProfile">
-        <button v-if="!isFollowing" @click="follow()" class="btn btn-info">Follow</button>
-        <button v-if="isFollowing" @click="unfollow()" class="btn btn-info">Unfollow</button>
+        <button v-if="!isFollowing" @click="follow()" >Follow</button>
+        <button v-if="isFollowing" @click="unfollow()" >Unfollow</button>
       </div>
       <p class="bio">
         <strong>Bio:</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad iste harum animi deserunt voluptatem, exercitationem molestias, minima beatae numquam, nostrum fugit odio temporibus officiis doloribus architecto reiciendis blanditiis repellat tempora.
@@ -177,7 +177,32 @@ svg {
 }
 
 
-.btn{
-  margin-right: 5px;
+p{
+  margin: 5%;
+}
+
+button:hover {
+  background-color: #AAC4FF;
+}
+
+button:active {
+  background-color: #AAC4FF;
+}
+
+button:focus {
+  outline: none;
+}
+
+button {
+  border-radius: 5px;    
+  border: none;
+  padding: 0.5rem 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 5px;
+  font-weight: 700;
+  color: white;
+  background-color: #B1B2FF; 
+  margin-right: 5px; 
 }
 </style>
