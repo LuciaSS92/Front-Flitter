@@ -1,8 +1,8 @@
 <template>
-  <nav>
-    <div class="title">
+  <nav>   
+    <div class="title"> 
       <router-link class="navbar-brand" to="/">flitter </router-link> <!--public feed-->
-      <font-awesome-icon class="flitter-icon" icon="fa-solid fa-kiwi-bird " size="s" />
+      <font-awesome-icon class="flitter-icon" icon="fa-solid fa-kiwi-bird " size="l"/>
     </div>
     <ul>
       <template v-if="!isLogged">
@@ -103,6 +103,10 @@ export default defineComponent({
   font-size: 2.5rem;
   color: white;
   text-decoration: none;
+}
+
+.flitter-icon{
+  margin: 1rem 0 0 0;
 }
 
 nav {
