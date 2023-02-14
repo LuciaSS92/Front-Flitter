@@ -3,7 +3,9 @@ import HomeView from "../views/HomeView.vue";
 import ForgotPassword from "../components/ForgotPassword.vue";
 import ResetPassword from "../components/ResetPassword.vue";
 import FeedView from "../views/FeedView.vue";
+import haveRoleGuard from "./role-guard";
 import SelectedUserView from "@/views/SelectedUserView.vue";
+
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -51,7 +53,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/for-you',
     name: 'for-you',
-
+    beforeEnter: haveRoleGuard,
     component: () => import(/* webpackChunkName: "for-you" */ '../views/PrivateFeedView.vue')
   },
 ];

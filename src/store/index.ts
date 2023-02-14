@@ -36,6 +36,12 @@ export default createStore<State>({
         commit("setFleets", response.data);
       });
     },
+    async requestPrivateFleets({ commit }) {
+      auth.getAllPrivateFleets().then((response) => {
+        console.log("This is the response", response.data)
+        commit("setFleets", response.data);
+      });
+    },
     async searchFleets({ commit }, { search }) {
       const response = await auth.searchFleets(search)
       commit("setFleets", response.data);

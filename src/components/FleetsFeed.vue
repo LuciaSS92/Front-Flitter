@@ -1,5 +1,4 @@
 <template>
-  <h1 class="title">{{ msg }}</h1>
   <PaginationItem
     :currentPage="currentPage"
     :totalPages="totalPages"
@@ -37,7 +36,7 @@ export default defineComponent({
     FleetCard
   },
   props: {
-    msg: String,
+    privateFleets: Boolean,
   },
   data() {
     return {
@@ -51,7 +50,12 @@ export default defineComponent({
   // Get the fleets from the store
   async created() {
     console.log("FleetsFeed created");
-    await store.dispatch("requestFleets");
+    if (this.privateFleets === false) {
+      console.log("FleetsFeed created");
+      await store.dispatch("requestFleets");
+    } else {
+      await store.dispatch("requestPrivateFleets");
+    }
   },
   methods: {
     onPageChanged(page: number) {
