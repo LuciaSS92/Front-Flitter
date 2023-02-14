@@ -13,6 +13,7 @@ export default defineComponent({
 },
 });
 </script>
+
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

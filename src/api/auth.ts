@@ -1,10 +1,27 @@
+
 import {User} from "@/models/user"
 import flitterApi from './api'
+import axios from "axios";
+import store from "@/store";
+
+const BASE_URL = "http://localhost:3000";
+const axiosInstance = axios.create({
+  baseURL: BASE_URL,
+});
+
 
 export default {
   async getAllFleets() {
     return await flitterApi.get("/api/fleets?sort=-createdAt");
   },
+  async getAllPrivateFleets() {
+    return await axiosInstance.get("/api/fleets/private?sort=-createdAt&limit=100",  {
+      headers: {
+        'Authorization': 'Bearer ' + store.getters.getToken,
+  }
+    });
+  },
+
   async searchFleets(text: string) {
     return await flitterApi.get("/api/fleets?text=" + text);
   },

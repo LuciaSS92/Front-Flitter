@@ -1,8 +1,9 @@
 <template>
     <div class="privateFeed">
-        <h2>Welcome to your personal feed</h2>
         <CreateFleet @newFleet="postFleet" />
     </div>
+    <FleetsFeed privateFleets />
+
 </template>
 
 <script lang="ts">
@@ -11,12 +12,14 @@ import CreateFleet from '@/components/CreateFleet.vue';
 import { Fleet } from '@/models/fleet';
 import axios from "axios";
 import store from "@/store";
+import FleetsFeed from '@/components/FleetsFeed.vue';
 
 
 export default defineComponent({
     name: 'PrivateFeedView',
     components: {
-        CreateFleet, 
+        CreateFleet,
+        FleetsFeed,
     },
     setup() {
         function postFleet(fleet: Fleet) {
@@ -40,3 +43,18 @@ export default defineComponent({
     }
 });
 </script>
+
+<style scoped>
+.privateFeed {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  list-style: none;
+}
+
+
+</style>

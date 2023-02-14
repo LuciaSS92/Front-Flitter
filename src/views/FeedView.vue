@@ -1,15 +1,20 @@
 <template>
-    <FleetsFeed msg="Welcome to your Feed"/>
+    <SearchBarVue />
+    <FleetsFeed />
   </template>
 
   <script lang="ts">
   import { defineComponent } from 'vue';
-  import FleetsFeed from '@/components/FleetsFeed.vue'; // @ is an alias to /src
+  import FleetsFeed from '@/components/FleetsFeed.vue';
+  import SearchBarVue from '@/components/SearchBar.vue';
+
+
 
   export default defineComponent({
     name: 'FeedView',
     components: {
       FleetsFeed,
+      SearchBarVue,
     },
   });
   </script>
