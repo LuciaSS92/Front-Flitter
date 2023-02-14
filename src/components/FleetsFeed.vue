@@ -1,5 +1,6 @@
 <template>
   <div class="feed"> 
+    <SearchBarVue />
 
   <ul class="fleet-list">
     <!-- For with routes to all the fleets -->
@@ -28,6 +29,7 @@ import { defineComponent } from "vue";
 import { Fleet } from "@/models/fleet";
 import PaginationItem from "./PaginationItem.vue";
 import store from "@/store";
+import SearchBarVue from '@/components/SearchBar.vue';
 
 const PAGE_SIZE = 5;
 
@@ -35,7 +37,8 @@ export default defineComponent({
   name: "FleetsFeed",
   components: {
     PaginationItem,
-    FleetCard
+    FleetCard,
+    SearchBarVue,
   },
   props: {
     privateFleets: Boolean,
