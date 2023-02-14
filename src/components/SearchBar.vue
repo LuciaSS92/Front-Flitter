@@ -97,8 +97,8 @@ export default defineComponent({
 <style scoped>
 
 .search-bar {
-  width: 40%;
-  margin: 2rem 0 1rem;
+  width: 60%;
+  margin: 1rem 0 1rem;
 }
 
 input {
