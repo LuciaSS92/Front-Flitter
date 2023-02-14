@@ -1,33 +1,17 @@
 <template>
   <form class="search-bar-form">
-    <input
-      id="search"
-      type="text"
-      v-model="search"
-      placeholder="Search Flitter"
-      @keyup.enter="searchFleets"
-    />
+    <input class="search-bar" id="search" type="text" v-model="search" placeholder="Search Flitter"
+      @keyup.enter="searchFleets" />
     <button :onClick="searchFleets">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="16"
-        height="16"
-        fill="currentColor"
-        class="bi bi-search"
-        viewBox="0 0 16 16"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+        viewBox="0 0 16 16">
         <path
-          d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
-        />
+          d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
       </svg>
     </button>
     <div v-if="searched && fleetsSearched.length > 0">
       <ul class="fleet-list">
-        <li
-          class="fleet-item"
-          v-for="fleet in fleetsSearched"
-          :key="fleet.createdAt"
-        >
+        <li class="fleet-item" v-for="fleet in fleetsSearched" :key="fleet.createdAt">
           <FleetCard :fleet="fleet"> </FleetCard>
         </li>
       </ul>
@@ -118,6 +102,7 @@ input {
 button {
   border-radius: 5px;
 }
+
 /* Style for the list of fleets */
 .fleet-list {
   display: flex;
@@ -142,5 +127,10 @@ button {
 
 .fleet-item:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.search-bar {
+  width: 40%;
+  margin: 2rem 0 1rem;
 }
 </style>

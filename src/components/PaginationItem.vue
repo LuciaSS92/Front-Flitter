@@ -100,7 +100,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
 .pagination {
   list-style-type: none;
   margin: 5;
@@ -115,25 +114,27 @@ export default defineComponent({
   display: inline-block;
 }
 
-button {
-  border-radius: 5px;
-  background-color: #42b983;
-  color: white;
-  border: none;
-  padding: 0.5rem 0.5rem;
-  cursor: pointer;
-  font-size: 1rem;
-}
-
 button:hover {
-  background-color: #2c3e50;
+  background-color: #AAC4FF;
 }
 
 button:active {
-  background-color: #2c3e50;
+  background-color: #AAC4FF;
 }
 
 button:focus {
   outline: none;
+}
+
+button {
+  border-radius: 5px;    
+  border: none;
+  padding: 0.5rem 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 5px;
+  font-weight: 700;
+  color: white;
+  background-color: #B1B2FF;  
 }
 </style>
