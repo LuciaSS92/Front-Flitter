@@ -44,12 +44,7 @@ const routes: Array<RouteRecordRaw> = [
     path: "/profile/:userName",
     name: "user-profile",
     component: SelectedUserView,
-  },
-  {
-    path: "/:pathMatch(.*)",
-    component: () =>
-      import(/* webpackChunkName: "notFound" */ "../views/NotFoundView.vue"),
-  },
+  },  
   {
     path: "/feed",
     name: "feed",
@@ -61,8 +56,11 @@ const routes: Array<RouteRecordRaw> = [
     beforeEnter: haveRoleGuard,
     component: () => import(/* webpackChunkName: "for-you" */ '../views/PrivateFeedView.vue')
   },
+  {
+    path: "/:pathMatch(.*)",
+    component: import(/*webpackChunkName: "NotFound"*/ "../views/NotFoundView.vue"),
+  }
 ];
-
 
 const router = createRouter({
   history: createWebHashHistory(),

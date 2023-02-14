@@ -1,9 +1,5 @@
 <template>
-  <PaginationItem
-    :currentPage="currentPage"
-    :totalPages="totalPages"
-    @page-changed="onPageChanged"
-  />
+  <div class="feed"> 
 
   <ul class="fleet-list">
     <!-- For with routes to all the fleets -->
@@ -17,6 +13,12 @@
     </FleetCard>
     </li>
   </ul>
+  <PaginationItem
+    :currentPage="currentPage"
+    :totalPages="totalPages"
+    @page-changed="onPageChanged"
+  />
+</div>
 </template>
 
 <script lang="ts">
@@ -83,13 +85,27 @@ export default defineComponent({
 </script>
 
 <style scoped>
+
+.feed {
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 60%;
+  min-width: 350px;
+  max-width: 100%;
+  border-radius: 5px;
+  padding: 40px;
+  box-shadow: 0 4px 10px 4px rgba(0, 0, 0, 0.3);
+}
 .title {
   font-size: 2rem;
   margin: 1rem 0;
   text-align: center;
+  
 }
 
-.fleet-info {
+.fleet-info {  
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -113,7 +129,8 @@ export default defineComponent({
 }
 
 .fleet-item {
-  width: auto;
+  background-color: #EEF1FF ;
+  width: 90%;
   margin: 1rem;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;

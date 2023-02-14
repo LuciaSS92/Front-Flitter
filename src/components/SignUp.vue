@@ -20,7 +20,6 @@
 <script>
 import { defineComponent } from "vue";
 import router from "@/router";
-import auth from "@/api/auth";
 import axios from 'axios';
 
 export default defineComponent({
@@ -76,11 +75,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.singUp {
-  padding: 2rem;
-}
-
 .title {
+  padding: 2rem;
   text-align: center;
 }
 
@@ -92,7 +88,7 @@ export default defineComponent({
   width: 20%;
   min-width: 350px;
   max-width: 100%;
-  background: rgba(19, 35, 47, 0.9);
+  background: #EEF1FF;
   border-radius: 5px;
   padding: 40px;
   box-shadow: 0 4px 10px 4px rgba(0, 0, 0, 0.3);
@@ -100,39 +96,25 @@ export default defineComponent({
 
 .form-label {
   margin-top: 2rem;
-  color: white;
+  color: black;
   margin-bottom: 0.5rem;
-
-  &:first-of-type {
-    margin-top: 0rem;
-  }
 }
 
 .form-input {
   padding: 10px 15px;
   background: none;
   background-image: none;
-  border: 1px solid white;
-  color: white;
-
-  &:focus {
-    outline: 0;
-    border-color: #1ab188;
-  }
+  border: 1px solid black;
+  color: black;  
 }
 
 .form-submit {
-  background: #1ab188;
+  background: #B1B2FF;
   border: none;
   color: white;
   margin-top: 3rem;
   padding: 1rem 0;
-  cursor: pointer;
-  transition: background 0.2s;
-
-  &:hover {
-    background: #0b9185;
-  }
+  cursor: pointer;   
 }
 
 .error {
