@@ -1,9 +1,9 @@
 export interface Fleet {
-    __id: string,
+    _id: string,
     __v: number,
     userName: string,
     text: string,
-    kudos: number,
+    kudos: string[],
     img: string,
     createdAt: number,
 }
