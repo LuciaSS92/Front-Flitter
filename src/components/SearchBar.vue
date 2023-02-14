@@ -123,7 +123,7 @@ button {
 
 .fleet-item {
   background-color: #EEF1FF ;
-  width: 50%;
+  width: 90%;
   margin: 1rem;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
