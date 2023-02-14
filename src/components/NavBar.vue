@@ -2,7 +2,7 @@
   <nav>   
     <div class="title"> 
       <router-link class="navbar-brand" to="/">flitter </router-link> <!--public feed-->
-      <font-awesome-icon class="flitter-icon" icon="fa-solid fa-kiwi-bird " size="l"/>
+      <font-awesome-icon class="flitter-icon" icon="fa-solid fa-kiwi-bird"/>
     </div>
     <ul>
       <template v-if="!isLogged">
