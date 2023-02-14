@@ -63,6 +63,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import store from "@/store";
+import auth from '@/api/auth';
 export default defineComponent({
   name: 'NavBar',
   data() {
@@ -83,14 +84,14 @@ export default defineComponent({
     logout() {
       store.commit("setToken", '');
       localStorage.removeItem("token");
-      // localStorage.removeItem("auth_Token")
       console.log('logged out, returning to login page');
       this.$router.push('/login');
     },
-    deactivateAccount() {
+    async deactivateAccount() {
+      const user = await auth.getCurrentUser()
+      await auth.deleteUser(user._id)
       store.commit("setToken", '');
       localStorage.removeItem("token");
-      // localStorage.removeItem("auth_Token");
       console.log("Your account has been deactivated");
       this.showWarning = false;
       this.$router.push("/signup");

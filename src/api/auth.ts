@@ -58,4 +58,7 @@ export default {
   async getUserFleets(userName: string) {
     return await flitterApi.get("/api/fleets?userName=" + userName);
   },
+  async deleteUser(userId: string) {
+    return await flitterApi.delete("/users/" + userId);
+  },
 };
