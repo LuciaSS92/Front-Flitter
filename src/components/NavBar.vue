@@ -59,12 +59,14 @@ export default defineComponent({
   methods: {
     logout() {
       store.commit("setToken", '');
+      localStorage.removeItem("token");
       // localStorage.removeItem("auth_Token")
       console.log('logged out, returning to login page');
       this.$router.push('/login');
     },
     deactivateAccount() {
       store.commit("setToken", '');
+      localStorage.removeItem("token");
       // localStorage.removeItem("auth_Token");
       console.log("Your account has been deactivated");
       this.showWarning = false;

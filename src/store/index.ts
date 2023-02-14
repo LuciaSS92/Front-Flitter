@@ -9,7 +9,7 @@ interface State {
 export default createStore<State>({
   state: {
     fleets: [] as Fleet[],
-    token: '' as string
+    token: localStorage.getItem("token") ?? '' as string
   },
   getters: {
     getFleets(state: { fleets: Fleet[] }) {
