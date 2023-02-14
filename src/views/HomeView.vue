@@ -1,7 +1,19 @@
-<script lang="ts">
-import { defineComponent } from 'vue';
+<template>
+  <SearchBarVue />
+  <FleetsFeed />
+</template>
 
-export default defineComponent({
-  name: 'HomeView',
-});
-</script>
+<script lang="ts">
+  import { defineComponent } from 'vue';
+  import FleetsFeed from '@/components/FleetsFeed.vue';
+  import SearchBarVue from '@/components/SearchBar.vue';
+
+
+  export default defineComponent({
+    name: 'HomeView',
+    components: {
+      FleetsFeed,
+      SearchBarVue,
+    },
+  });
+  </script>
