@@ -95,6 +95,12 @@ export default defineComponent({
 </script>
 
 <style scoped>
+
+.search-bar {
+  width: 60%;
+  margin: 1rem 0 1rem;
+}
+
 input {
   border-radius: 5px;
 }
@@ -116,7 +122,8 @@ button {
 }
 
 .fleet-item {
-  width: auto;
+  background-color: #EEF1FF ;
+  width: 90%;
   margin: 1rem;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
@@ -129,8 +136,5 @@ button {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-.search-bar {
-  width: 40%;
-  margin: 2rem 0 1rem;
-}
+
 </style>
