@@ -27,8 +27,8 @@
             v-for="fleet in fleetsPaginated"
             :key="fleet.createdAt"
           >
-          <FleetCard :fleet="fleet">
-          </FleetCard>
+          <FleetCard :fleet="fleet" :current-user-id="ownUser?._id"/>
+
           </li>
         </ul>
         <PaginationItem
