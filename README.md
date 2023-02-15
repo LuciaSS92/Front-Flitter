@@ -23,16 +23,15 @@ _for authorised, registered users_
 1. **User deactivation:** As a member of the platform, I want to be able to log out of my account from the private area to stop being a member of the platform.
 2. **User logout:** As a member of the platform, I want to be able to log out of my platform to prevent an unauthorized user from using my account from a computer without my authorization.
 3. **Create a publication:** As a member of the platform I want to be able to create through an easy to use form where I can fill in all the fields that make up a publication.
-4. **Delete a publication:** As a member of the platform I want to be able to delete a publication in order to remove content that I no longer wish to have published.
-5. **Follow a platform member:** As a member of the platform I want to follow other members of the platform so that I can customize the contents that appear in the personalized list of latest publications.
-6. **Stop following a platform member:** As a member of the platform I want to stop following members of the platform that I am following in order to stop displaying their content in the customized list of latest posts.
-7. **View customized list of latest posts:** As a platform member I want the list of latest posts to consist of content published only by the users I am following.
-8. **Award Kudos to the author of a publication:** As a member of the platform I want to be able to reward the author of a publication by awarding "a kudos" to his/her publication.
-9. **Remove Kudos to the author of a publication:** As a member of the platform I want to be able to remove the kudos I had previously awarded to a publication.
+4. **Follow a platform member:** As a member of the platform I want to follow other members of the platform so that I can customize the contents that appear in the personalized list of latest publications.
+5. **Stop following a platform member:** As a member of the platform I want to stop following members of the platform that I am following in order to stop displaying their content in the customized list of latest posts.
+6. **View customized list of latest posts:** As a platform member I want the list of latest posts to consist of content published only by the users I am following.
+7. **Award Kudos to the author of a publication:** As a member of the platform I want to be able to reward the author of a publication by awarding "a kudos" to his/her publication.
+8. **Remove Kudos to the author of a publication:** As a member of the platform I want to be able to remove the kudos I had previously awarded to a publication.
 
 ## Getting Started:
 ** Please ensure you are also setup on the [backend](https://github.com/criSiles/Flitter-BackEnd "backend") for this project**
-- git clone the [repository](https://github.com/LuciaSaenz/front-final-project.git "repo"), then:
+- git clone the [repository](https://github.com/LuciaSaenz/Front-Flitter "repo"), then:
 
 ### Project setup
 ```
