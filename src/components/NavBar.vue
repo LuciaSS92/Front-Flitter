@@ -1,8 +1,8 @@
 <template>
-  <nav>   
-    <div class="title"> 
+  <nav>
+    <div class="title">
       <router-link class="navbar-brand" to="/">flitter </router-link> <!--public feed-->
-      <font-awesome-icon class="flitter-icon" icon="fa-solid fa-kiwi-bird"/>
+      <font-awesome-icon class="flitter-icon" icon="fa-solid fa-kiwi-bird" />
     </div>
     <ul>
       <template v-if="!isLogged">
@@ -24,6 +24,9 @@
         </div>
       </template>
       <template v-if="isLogged">
+        <li>
+          <router-link to="/">Home</router-link> <!--public feed-->
+        </li>
         <li>
           <router-link to="/profile">Profile</router-link> <!--user profile-->
         </li>
@@ -49,8 +52,8 @@
             <p><strong>Are you sure you want to deactivate your account?</strong></p>
             <p>This action is irreversible and all your data will be lost.</p>
             <div class="buttons">
-              <button  @click="deactivateAccount">Yes, deactivate my account</button>
-              <button  @click="showWarning = false">No, cancel</button>
+              <button @click="deactivateAccount">Yes, deactivate my account</button>
+              <button @click="showWarning = false">No, cancel</button>
             </div>
           </div>
         </li>
@@ -101,14 +104,13 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
 .title {
   font-size: 2.5rem;
   color: white;
   text-decoration: none;
 }
 
-.flitter-icon{
+.flitter-icon {
   margin: 1rem 0 0 0;
 }
 
@@ -133,7 +135,7 @@ li {
   margin-right: 10px;
 }
 
-svg{
+svg {
   margin: 5px;
 }
 
@@ -161,7 +163,7 @@ button:focus {
 
 button {
   margin: auto 1rem;
-  border-radius: 5px;    
+  border-radius: 5px;
   border: none;
   padding: 0.5rem 0.5rem;
   cursor: pointer;
@@ -169,7 +171,7 @@ button {
   border-radius: 5px;
   font-weight: 700;
   color: white;
-  background-color: #767c99;  
+  background-color: #767c99;
 }
 
 @media screen and (max-width: 768px) {
