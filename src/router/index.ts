@@ -44,12 +44,7 @@ const routes: Array<RouteRecordRaw> = [
     path: "/profile/:userName",
     name: "user-profile",
     component: SelectedUserView,
-  },  
-  {
-    path: "/feed",
-    name: "feed",
-    component: FeedView,
-  },
+  },    
   {
     path: '/for-you',
     name: 'for-you',
