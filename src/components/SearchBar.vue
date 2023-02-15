@@ -9,14 +9,7 @@
           d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
       </svg>
     </button>
-    <div v-if="searched && fleetsSearched.length > 0">
-      <ul class="fleet-list">
-        <li class="fleet-item" v-for="fleet in fleetsSearched" :key="fleet.createdAt">
-          <FleetCard :fleet="fleet"> </FleetCard>
-        </li>
-      </ul>
-    </div>
-    <div v-else-if="searched && search.length > 0">Sorry! There doesn't seem to be any fleets about this yet!</div>
+    <div v-if="searched && search.length > 0 && fleetsSearched.length == 0">Sorry! There doesn't seem to be any fleets about this yet!</div>
   </form>
 </template>
 
@@ -24,13 +17,9 @@
 import { defineComponent } from "vue";
 import { Fleet } from "@/models/fleet";
 import store from "@/store";
-import FleetCard from "./FleetCard.vue";
 
 export default defineComponent({
   name: "SearchBar",
-  components: {
-    FleetCard,
-  },
   data() {
     return {
       search: "",

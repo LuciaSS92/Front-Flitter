@@ -12,10 +12,10 @@
     <div></div>
     <div>{{ fleet.text }}</div>
     <div class="fleet-footer">
-        <button class="kudos" :class="{ active: iLike }" @click="toggleHeart">
+        <button class="kudos" :class="{ active: givenKudos || !currentUserId }" @click="toggleHeart">
             <span class="heart">
 
-                <div v-if="iLike"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                <div v-if="givenKudos || !currentUserId "><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
                         <path fill="currentColor"
                             d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53L12 21.35Z" />
                     </svg></div>
@@ -23,7 +23,7 @@
                         <path fill="currentColor"
                             d="m12.1 18.55l-.1.1l-.11-.1C7.14 14.24 4 11.39 4 8.5C4 6.5 5.5 5 7.5 5c1.54 0 3.04 1 3.57 2.36h1.86C13.46 6 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5c0 2.89-3.14 5.74-7.9 10.05M16.5 3c-1.74 0-3.41.81-4.5 2.08C10.91 3.81 9.24 3 7.5 3C4.42 3 2 5.41 2 8.5c0 3.77 3.4 6.86 8.55 11.53L12 21.35l1.45-1.32C18.6 15.36 22 12.27 22 8.5C22 5.41 19.58 3 16.5 3Z" />
                     </svg></div>
-                <span>{{ kudos }}</span>
+                <span>{{ kudos.length }}</span>
             </span>
         </button>
         <svg xmlns="http://www.w3.org/2000/svg" width="16" length-adjust="auto" fill="currentColor"
@@ -36,33 +36,38 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { Fleet } from '@/models/fleet';
+import { defineComponent, PropType } from 'vue'
+import auth from "@/api/auth"
 
 export default defineComponent({
     name: "FleetCard",
 
     props: {
-
         fleet: {
-            type: Object,
+            type: Object as PropType<Fleet>,
             required: true
         },
-        value: {
-            type: Boolean,
-            default: false,
-        },
-        counter: {
-            type: Number,
-            default: 0,
-        },
+        currentUserId: {
+            type: String,
+            required: false
+        }
     },
     data: function () {
         return {
-            iLike: this.value,
-            kudos: this.counter,
+            kudos: this.fleet.kudos,
         };
     },
-
+    computed: {
+        givenKudos(): boolean {
+            if(!this.currentUserId){
+                return false;
+            }else if(this.kudos.includes(this.currentUserId)){
+                return true;
+            }
+            return false;
+        }
+    },
     methods: {
         timeConverter(UNIX_timestamp: number) {
             var a = new Date(UNIX_timestamp * 1000);
@@ -93,11 +98,15 @@ export default defineComponent({
             this.$router.push('/profile/' + userName);
         },
         toggleHeart: function () {
-            this.iLike = !this.iLike;
-            if (this.iLike) {
-                this.kudos++;
-            } else {
-                this.kudos--;
+            if(this.currentUserId){
+                if(this.givenKudos){
+                    console.log("remove kudos")
+                    auth.removeKudos(this.fleet._id);
+                    this.kudos = this.kudos.filter((x)=>x!==this.currentUserId);
+                } else {
+                    auth.addKudos(this.fleet._id);
+                    this.kudos.push(this.currentUserId);
+                }
             }
         },
     },

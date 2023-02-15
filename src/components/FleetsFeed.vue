@@ -9,9 +9,7 @@
       v-for="fleet in fleetsPaginated"
       :key="fleet.createdAt"
     >
-    <FleetCard :fleet="fleet">
-
-    </FleetCard>
+      <FleetCard :fleet="fleet" :current-user-id="ownUser._id"/>
     </li>
   </ul>
   <PaginationItem
@@ -27,6 +25,8 @@ import FleetCard from "./FleetCard.vue";
 import { defineComponent } from "vue";
 //   import auth from "@/api/auth";
 import { Fleet } from "@/models/fleet";
+import { User } from "@/models/user";
+import auth from "@/api/auth"
 import PaginationItem from "./PaginationItem.vue";
 import store from "@/store";
 import SearchBarVue from '@/components/SearchBar.vue';
@@ -49,11 +49,15 @@ export default defineComponent({
       searched: true,
       currentPage: 1,
       fleetsByPage: [] as Fleet[],
+      ownUser: {} as User,
     };
   },
 
   // Get the fleets from the store
   async created() {
+    if(store.getters.getToken){
+      this.ownUser = await auth.getCurrentUser();
+    }
     console.log("FleetsFeed created");
     if (this.privateFleets === false) {
       console.log("FleetsFeed created");

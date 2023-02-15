@@ -39,6 +39,12 @@ export default {
   async unfollowUser(userId:string){
     await flitterApi.delete("/api/follows", {data:{userId}});
   },
+  async addKudos(fleetId:string){
+    await flitterApi.post("/api/kudos", {fleetId});
+  },
+  async removeKudos(fleetId:string){
+    await flitterApi.delete("/api/kudos", {data:{fleetId}});
+  },
   signUp(
     email: string,
     name: string,
