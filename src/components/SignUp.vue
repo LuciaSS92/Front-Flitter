@@ -60,7 +60,7 @@ export default defineComponent({
         };
         axios(config)
           .then((response) => {
-            console.log("Account has been successfully created");
+            alert("Account has been successfully created");
             router.push({ name: "login" });
             console.log(JSON.stringify(response.data));
           })
